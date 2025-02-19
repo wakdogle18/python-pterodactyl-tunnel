@@ -8,14 +8,14 @@ Pterodactyl Python  egg with Git & Cloudflare Tunnel support
 
 #### 🔹 Supports AMD64 & ARM64
 #### 🔹 Cloudflare Tunnel support
-#### 🔹 Git support for your webserver
+#### 🔹 Git support for your Python
 #### 🔹 You can select the desired Python version:
 - ✅ 3.14
 - ✅ 3.13
 - ✅ 3.12
 
 
-[PHP supported versions](https://devguide.python.org/versions/)
+[Python supported versions](https://devguide.python.org/versions/)
 <br><br>
 ## How to install
 
