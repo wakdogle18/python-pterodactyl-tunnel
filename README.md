@@ -50,14 +50,14 @@ With **Cloudflared**, you can create a secure tunnel to your server, making it a
 
 - 🔹 **Step 7: Add Your Domain**
     
-![grafik](https://github.com/user-attachments/assets/49c4ebcb-1653-4c31-b2fd-465a64712821)
+![grafik](https://github.com/user-attachments/assets/349f8aa5-5921-45c2-b3da-0ec81225ffe9)
 
 
 ---
 
 - 🔹 **Step 8: Add your token.**
   
-![grafik](https://github.com/user-attachments/assets/46b09f6a-30b0-48aa-9980-53697b1fbcf6)
+![grafik](https://github.com/user-attachments/assets/22e723b1-9a88-4d09-82d3-6caf4801c37d)
 
 ---
 
