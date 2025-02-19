@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+    <title>Welcome</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d0d0d;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            text-align: center;
+        }
+
+        .canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #code-text {
+            font-size: 20px;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive design for mobile */
+        @media (max-width: 600px) {
+            #code-text h1 {
+                font-size: 16px;
+            }
+        }
+
+        /* Animation effect for typing text with an infinite loop */
+        @keyframes typing {
+            0% { width: 0; }
+            80% { width: 100%; }
+            90%, 100% { width: 0; } /* Text disappears at the end */
+        }
+
+        /* Cursor blink effect */
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        #line1, #line2, #line3 {
+            border-right: 2px solid;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 5s steps(40, end) infinite, blink 1s step-end infinite alternate;
+        }
+
+        #line1 { animation-delay: 0s; }
+        #line2 { animation-delay: 5s; }
+        #line3 { animation-delay: 10s; }
+
+        a {
+            color: #4CAF50;
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas class="canvas-container" id="canvas"></canvas>
+
+    <div id="code-text">
+        <h1 id="line1">Welcome to</h1>
+        <h1 id="line2">Your Python App</h1>
+        <h1 id="line3">Thank You for Choosing Tunnels with Love ♥♥♥♥♥</h1>
+        <a href="https://discord.tunnels.my">Go to FAQ</a>
+    </div>
+
+    <script>
+        // Canvas for connected orbs
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particlesArray = [];
+        const numberOfParticles = 100;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) {
+                    this.speedX = -this.speedX;
+                }
+                if (this.y > canvas.height || this.y < 0) {
+                    this.speedY = -this.speedY;
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function connectParticles() {
+            let opacityValue = 1;
+            for (let a = 0; a < particlesArray.length; a++) {
+                for (let b = a; b < particlesArray.length; b++) {
+                    let distance = ((particlesArray[a].x - particlesArray[b].x) ** 2) + ((particlesArray[a].y - particlesArray[b].y) ** 2);
+                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                        opacityValue = 1 - (distance / 20000);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${opacityValue})`;
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+                        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+            connectParticles();
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
