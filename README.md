@@ -73,9 +73,9 @@ With **Cloudflared**, you can create a secure tunnel to your server, making it a
 
 ---
 
-- 🔹 **Step 11: Restart your Python.**
+- 🔹 **Step 11: Start your Python.**
   
-![grafik](https://github.com/user-attachments/assets/3d4b63fd-db66-4a7d-85ea-0bec4a7ef948)
+![grafik](https://github.com/user-attachments/assets/2c1728fc-2e24-479c-b733-a705d917e90c)
 
 
 ✅ You have successfully set up Cloudflared and connected it to your server!<br><br>
