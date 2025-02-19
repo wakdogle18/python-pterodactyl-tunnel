@@ -48,9 +48,9 @@ With **Cloudflared**, you can create a secure tunnel to your server, making it a
 
 ---
 
-- 🔹 **Step 7: Activate Cloudflared**
+- 🔹 **Step 7: Add Your Domain**
     
-![grafik](https://github.com/user-attachments/assets/726c5dad-7cb6-4537-a215-6aaec59d827a)
+![grafik](https://github.com/user-attachments/assets/49c4ebcb-1653-4c31-b2fd-465a64712821)
 
 
 ---
